@@ -1,8 +1,7 @@
 
-
+docker build --tag=sinatra .
 
 docker run --rm -i -t --name=sinatra-temp -v ${PWD}:/root/sinatra/ sinatra /bin/bash
-
 
 {
 alias more='less -iX'
