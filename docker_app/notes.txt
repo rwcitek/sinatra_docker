@@ -1,0 +1,28 @@
+
+
+
+docker run --rm -i -t --name=sinatra-temp -v ${PWD}:/root/sinatra/ sinatra /bin/bash
+
+
+{
+alias more='less -iX'
+alias dir='ls -la'
+alias cls=clear
+alias h=history
+alias screen='screen -e$'\''\026'\''v'
+alias vi=vim
+export HISTCONTROL=ignoredups:ignorespace
+export PS1='\u@\H: \w\n\$ '
+export PAGER='less -iX'
+}
+
+
+apt-get update
+apt-get install -y elinks vim
+
+cd ~/sinatra
+
+kill $(jobs -p) ; wait ; ruby server.rb >& server.log & sleep 1
+
+curl -s http://localhost:4567 | elinks --dump
+
